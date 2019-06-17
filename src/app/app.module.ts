@@ -16,7 +16,8 @@ import { PatternSvgComponent } from './pattern-svg/pattern-svg.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    //LocalStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent],

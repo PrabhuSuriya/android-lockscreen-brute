@@ -7,20 +7,28 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   patterns = [];
+  mergedPattern = [];
   dots = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-  dotsStatus = [null, true, true, true, true, true, true, true, true, true];
+  dotsStatus = [null, true, false, false, false, false, false, false, false, false];
   dotsLength = 4;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     //const seed = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
-    const seed = this.getSeedFromDotStatus();
-    this.seedPatterns(seed, this.dotsLength);
+    // const seed = this.getSeedFromDotStatus();
+    // this.seedPatterns(seed, this.dotsLength);
   }
 
   onFilter() {
     const seed = this.getSeedFromDotStatus();
     this.seedPatterns(seed, this.dotsLength);
+    this.mergedPattern = [];
+    this.patterns.forEach(x => {
+      this.mergedPattern.push({
+        pattern: x,
+        data: {}
+      });
+    })
   }
   getSeedFromDotStatus() {
     const seed = [];
@@ -105,5 +113,10 @@ export class AppComponent {
 
   getLastDigit(pattern: number[]): number {
     return pattern[pattern.length - 1];
+  }
+
+
+  getData(patternID: number[]) {
+
   }
 }

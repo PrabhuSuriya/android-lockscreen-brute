@@ -6,13 +6,13 @@
     type="checkbox" name="" id="">
   </div>
   <input type="number" [(ngModel)]="dotsLength">
-  <button (click)="onFilter()">Filter</button>
+  <button (click)="onFilter()">Generate</button>
 </div>
 
 
 <div>
-  <div class="pattern-container" *ngFor="let item of patterns">
-    <pattern-svg [pattern]="item">
+  <div class="pattern-container" *ngFor="let item of mergedPattern">
+    <pattern-svg [pattern]="item.pattern">
     </pattern-svg>
   </div>
 </div>
