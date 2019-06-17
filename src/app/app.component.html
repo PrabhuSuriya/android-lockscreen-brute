@@ -1,0 +1,21 @@
+<h3>Patterns</h3>
+<div>
+  <div *ngFor="let row of dots">
+    <input *ngFor="let dot of row" (change)="updateList(dot, $event)" 
+    [(ngModel)]="dotsStatus[dot]"
+    type="checkbox" name="" id="">
+  </div>
+  <input type="number" [(ngModel)]="dotsLength">
+  <button (click)="onFilter()">Filter</button>
+</div>
+
+
+<div>
+  <div class="pattern-container" *ngFor="let item of patterns">
+    <pattern-svg [pattern]="item">
+    </pattern-svg>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

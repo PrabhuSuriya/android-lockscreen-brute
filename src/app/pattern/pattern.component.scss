@@ -1,0 +1,23 @@
+.wrapper {
+  background-color: #e0ec34;
+  height: 150px;
+  width: 150px;
+
+  .dot {
+    // background-color: rgb(117, 210, 30);
+    height: 50px;
+    width: 50px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+
+    .circle {
+      background-color: rgb(210, 66, 30);
+      height: 10px;
+      width: 10px;
+      margin: 0 auto;
+      margin-top: calc(50% - 5px);
+      border-radius: 50%; 
+    }
+  }
+}
