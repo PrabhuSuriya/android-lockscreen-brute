@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { StorageService } from "./storage.service";
 
 @Component({
   selector: "app-root",
@@ -22,15 +23,15 @@ export class AppComponent {
     false
   ];
   dotsLength = 4;
-  constructor() {}
+  constructor(private _localStorageService: StorageService) {}
 
   ngOnInit() {
     //const seed = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
     // const seed = this.getSeedFromDotStatus();
     // this.seedPatterns(seed, this.dotsLength);
   }
-  onSelect(type: string) {    
-    this.dotsStatus = new Array(10).fill(type == "all")
+  onSelect(type: string) {
+    this.dotsStatus = new Array(10).fill(type == "all");
   }
   onFilter() {
     const seed = this.getSeedFromDotStatus();
