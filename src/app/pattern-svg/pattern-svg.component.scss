@@ -1,10 +1,20 @@
-.wrapper{
-    width: 150px;
-    position: relative;
-
-    .p-name{
-position: absolute;
-bottom: 1px;
-left: 1px;
+.wrapper {
+  width: 150px;
+  // position: relative;
+  .bottom-icons {
+    background-color: #17607b;
+    color: #ffffff;
+    .p-name {
+      // position: absolute;
+      // bottom: 1px;
+      // left: 1px;
     }
+    .icon-wrapper {
+      float: right;
+      span {
+        cursor: pointer;
+        margin: 0 7px;
+      }
+    }
+  }
 }
