@@ -29,6 +29,7 @@ export class AppComponent {
     //const seed = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
     // const seed = this.getSeedFromDotStatus();
     // this.seedPatterns(seed, this.dotsLength);
+    // this._localStorageService.upsert("12453", { ban: true });
   }
   onSelect(type: string) {
     this.dotsStatus = new Array(10).fill(type == "all");
@@ -40,7 +41,7 @@ export class AppComponent {
     this.patterns.forEach(x => {
       this.mergedPattern.push({
         pattern: x,
-        data: {}
+        data: this._localStorageService.getdata(x.join(""))
       });
     });
   }
@@ -107,5 +108,8 @@ export class AppComponent {
     return pattern[pattern.length - 1];
   }
 
-  getData(patternID: number[]) {}
+  onIconChange(id: string, event) {
+    console.log("%c USERLOG-label", "color: green", id, event);
+    this._localStorageService.upsert(id, event);
+  }
 }

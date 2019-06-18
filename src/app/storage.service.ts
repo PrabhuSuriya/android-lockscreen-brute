@@ -6,12 +6,25 @@ import { LocalStorageService } from "ngx-localstorage";
   providedIn: "root"
 })
 export class StorageService {
-  localData: any;
+  localData: any = {};
   constructor(private _localStorageService: LocalStorageService) {
-    this.localData = this._localStorageService.get("lockdata");
+    this.localData = this.get();
   }
 
   upsert(id: string, data: any) {
     this.localData[id] = { id, data };
+    this.put();
+  }
+  getdata(key: string) {
+    const record = this.localData[key];
+    return record ? record.data : {};
+  }
+  put() {
+    this._localStorageService.set("lockdata", JSON.stringify(this.localData));
+  }
+  get() {
+    const data =
+      this._localStorageService.get("lockdata") || JSON.stringify({});
+    return JSON.parse(data);
   }
 }

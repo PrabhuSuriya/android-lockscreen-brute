@@ -22,7 +22,7 @@
 
 <div>
   <div class="pattern-container" *ngFor="let item of mergedPattern">
-    <pattern-svg [pattern]="item.pattern">
+    <pattern-svg [pattern]="item.pattern" [data]="item.data" (change)="onIconChange(item.pattern.join(''), $event)">
     </pattern-svg>
   </div>
 </div>
