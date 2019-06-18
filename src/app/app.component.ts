@@ -102,28 +102,6 @@ export class AppComponent {
     return result;
   }
 
-  getPatterns1(pattern: number[], dotsCount: number): number[][] {
-    let result = [];
-    const lastDigit = this.getLastDigit(pattern);
-    const allowedDigits = this.allowedNumber[lastDigit].filter(
-      x => pattern.indexOf(x) == -1
-    );
-
-    if (dotsCount == 1) {
-      result = [pattern];
-    } else {
-      allowedDigits.forEach(x => {
-        const nextPatterns = this.getPatterns1([...pattern, x], dotsCount - 1);
-        if (dotsCount - 1 == 1) {
-          result.push(nextPatterns);
-        }
-        console.log("nextPatterns", nextPatterns);
-      });
-    }
-
-    return result;
-  }
-
   getLastDigit(pattern: number[]): number {
     return pattern[pattern.length - 1];
   }
