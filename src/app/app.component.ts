@@ -10,6 +10,7 @@ export class AppComponent {
   patterns = [];
   mergedPattern = [];
   dots = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+  iconStatus = { ban: false, chk: false, thm: false };
   dotsStatus = [
     null,
     true,
@@ -33,6 +34,9 @@ export class AppComponent {
   }
   onSelect(type: string) {
     this.dotsStatus = new Array(10).fill(type == "all");
+  }
+  changeIcon(a,b){
+    
   }
   onFilter() {
     const seed = this.getSeedFromDotStatus();

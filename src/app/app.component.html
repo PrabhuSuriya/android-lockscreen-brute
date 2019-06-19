@@ -1,32 +1,46 @@
 <div class="container">
-<h3>Android LockScreen Brute</h3>
-<div>
-  Starts at:
-  <div *ngFor="let row of dots">
-    <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event)" 
-    [(ngModel)]="dotsStatus[dot]"
-    type="checkbox" name="" id="">
-  </div>
+  <h3>Android LockScreen Brute</h3>
   <div>
-    <input type="button" (click)="onSelect('all')" value="Select All">
-    <input type="button" (click)="onSelect('none')" value="Select None">
+    Starts at:
+    <div *ngFor="let row of dots">
+      <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event)" [(ngModel)]="dotsStatus[dot]"
+        type="checkbox" name="" id="">
+    </div>
+    <div>
+      <input type="button" (click)="onSelect('all')" value="Select All">
+      <input type="button" (click)="onSelect('none')" value="Select None">
+    </div>
+    <div>
+      <label>
+        <input class="checkbox" (change)="changeIcon('ban', $event)" 
+        [(ngModel)]="iconStatus.ban" type="checkbox">
+        Hide Banned
+      </label>
+      <label>
+        <input class="checkbox" (change)="changeIcon('chk', $event)" 
+        [(ngModel)]="iconStatus.chk" type="checkbox">
+        Hide Checked
+      </label>
+    </div>
+    <br>
+    <input type="number" [(ngModel)]="dotsLength">
+    <button (click)="onFilter()">Generate</button>
+    <span>Total combinaions: {{this.mergedPattern.length}}</span>
+    <fa name="cog" animation="spin"></fa>
+
   </div>
-  <br>
-  <input type="number" [(ngModel)]="dotsLength">
-  <button (click)="onFilter()">Generate</button>
-  <span>Total combinaions: {{this.mergedPattern.length}}</span>
-  <fa name="cog" animation="spin"></fa>
-
-</div>
 
 
-<div>
-  <div class="pattern-container" *ngFor="let item of mergedPattern">
-    <pattern-svg [pattern]="item.pattern" [data]="item.data" (change)="onIconChange(item.pattern.join(''), $event)">
-    </pattern-svg>
+  <div>
+    <div class="pattern-container" *ngFor="let item of mergedPattern">
+      <pattern-svg 
+      *ngIf="(!iconStatus.ban && item.data && item.ban === false)"
+      [pattern]="item.pattern" [data]="item.data" 
+      (change)="onIconChange(item.pattern.join(''), $event)">
+      </pattern-svg>
+    </div>
   </div>
-</div>
 
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
