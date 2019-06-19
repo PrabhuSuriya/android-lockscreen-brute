@@ -24,7 +24,7 @@ export class AppComponent {
     false
   ];
   dotsLength = 4;
-  constructor(private _localStorageService: StorageService) {}
+  constructor(private _localStorageService: StorageService) { }
 
   ngOnInit() {
     //const seed = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
@@ -71,17 +71,29 @@ export class AppComponent {
     console.log("%c USERLOG-label", "color: green", value, this.dotsStatus);
   }
 
+  // allowedNumber = [
+  //   [], //0
+  //   [2, 4, 5], //1
+  //   [1, 4, 5, 6, 3], //2
+  //   [2, 5, 6], //3
+  //   [1, 2, 5, 8, 7], //4
+  //   [1, 2, 3, 4, 6, 7, 8, 9], //5
+  //   [3, 2, 5, 8, 9], //6
+  //   [4, 5, 8], //7
+  //   [7, 4, 5, 6, 9], //8
+  //   [8, 5, 6] //9
+  // ];
   allowedNumber = [
     [], //0
-    [2, 4, 5], //1
-    [1, 4, 5, 6, 3], //2
-    [2, 5, 6], //3
-    [1, 2, 5, 8, 7], //4
+    [2, 4, 5, 6, 8], //1
+    [1, 4, 5, 6, 7, 9], //2
+    [2, 5, 6, 4, 8], //3
+    [1, 2, 5, 8, 7, 3, 9], //4
     [1, 2, 3, 4, 6, 7, 8, 9], //5
-    [3, 2, 5, 8, 9], //6
-    [4, 5, 8], //7
-    [7, 4, 5, 6, 9], //8
-    [8, 5, 6] //9
+    [3, 2, 5, 8, 9, 1, 7], //6
+    [4, 5, 8, 2, 6], //7
+    [7, 4, 5, 6, 9, 1, 3], //8
+    [8, 5, 6, 2, 4] //9
   ];
   getPatterns(pattern: number[], level): number[][] {
     let result = [];
