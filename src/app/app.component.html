@@ -31,10 +31,10 @@
   </div>
 
 
+  <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
   <div>
     <div class="pattern-container" *ngFor="let item of mergedPattern">
       <pattern-svg 
-      *ngIf="(!iconStatus.ban && item.data && item.ban === false)"
       [pattern]="item.pattern" [data]="item.data" 
       (change)="onIconChange(item.pattern.join(''), $event)">
       </pattern-svg>
