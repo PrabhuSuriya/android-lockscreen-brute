@@ -1,11 +1,27 @@
-h3{
+h3 {
   text-align: center;
 }
-.checkbox{
+.checkbox {
   margin: 15px;
 }
 
-.pattern-container{
+.pattern-container {
   display: inline-block;
   margin: 2px;
+}
+
+button,
+input[type="button"],
+input[type="number"] {
+  height: 25px;
+  vertical-align: middle;
+  font-size: 12px;
+  min-width: 100px;
+  font-weight: bolder;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0;
+}
+.loading {
+  padding: 10px;
 }

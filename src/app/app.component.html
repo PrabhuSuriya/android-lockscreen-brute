@@ -7,8 +7,8 @@
         type="checkbox" name="" id="">
     </div>
     <div>
-      <input type="button" (click)="onSelect('all')" value="Select All">
-      <input type="button" (click)="onSelect('none')" value="Select None">
+      <input class="btn btn-dark" type="button" (click)="onSelect('all')" value="Select All">
+      <input class="btn btn-dark" type="button" (click)="onSelect('none')" value="Select None">
     </div>
     <div>
       <label>
@@ -21,12 +21,23 @@
         [(ngModel)]="iconStatus.chk" type="checkbox">
         Hide Checked
       </label>
+      <label>
+        <input class="checkbox" (change)="changeIcon('thm', $event)" 
+        [(ngModel)]="iconStatus.thm" type="checkbox">
+        Hide Working
+      </label>
+      <label>
+        <input class="checkbox" (change)="changeIcon('pot', $event)" 
+        [(ngModel)]="iconStatus.pot" type="checkbox">
+        Hide Potential
+      </label>
+      <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
     </div>
     <br>
     <input type="number" [(ngModel)]="dotsLength">
-    <button (click)="onFilter()">Generate</button>
+    <button class="btn btn-primary" (click)="onFilter()">Generate</button>
     <span>Total combinaions: {{this.mergedPattern.length}}</span>
-    <fa name="cog" animation="spin"></fa>
+    <fa name="cog" animation="spin" class="loading" *ngIf="loading"></fa>
 
   </div>
 

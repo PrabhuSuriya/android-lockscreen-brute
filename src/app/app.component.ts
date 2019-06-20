@@ -8,9 +8,11 @@ import { StorageService } from "./storage.service";
 })
 export class AppComponent {
   patterns = [];
+  mergedPatternAll = [];
   mergedPattern = [];
   dots = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-  iconStatus = { ban: false, chk: false, thm: false };
+  iconStatus = { ban: true, chk: true, thm: false, pot: false };
+  loading = false;
   dotsStatus = [
     null,
     true,
@@ -23,8 +25,8 @@ export class AppComponent {
     false,
     false
   ];
-  dotsLength = 4;
-  constructor(private _localStorageService: StorageService) { }
+  dotsLength = 3;
+  constructor(private _localStorageService: StorageService) {}
 
   ngOnInit() {
     //const seed = [[1], [2], [3], [4], [5], [6], [7], [8], [9]];
@@ -35,19 +37,36 @@ export class AppComponent {
   onSelect(type: string) {
     this.dotsStatus = new Array(10).fill(type == "all");
   }
-  changeIcon(a,b){
-    
+  changeIcon(a, b) {}
+
+  onIconFilter() {
+    console.log("%c USERLOG-lat", "color: green", this.iconStatus);
+    this.mergedPattern = this.mergedPatternAll.filter(
+      x =>
+        (!this.iconStatus.ban || !x.data.ban) &&
+        (!this.iconStatus.chk || !x.data.chk) &&
+        (!this.iconStatus.thm || !x.data.thm) &&
+        (!this.iconStatus.pot || !x.data.pot)
+    );
   }
   onFilter() {
+    this.loading = true;
     const seed = this.getSeedFromDotStatus();
     this.seedPatterns(seed, this.dotsLength);
     this.mergedPattern = [];
+    this.mergedPatternAll = [];
     this.patterns.forEach(x => {
-      this.mergedPattern.push({
+      this.mergedPatternAll.push({
         pattern: x,
-        data: this._localStorageService.getdata(x.join(""))
+        data: Object.assign(
+          { ban: false, chk: false, thm: false, pot: false },
+          this._localStorageService.getdata(x.join(""))
+        )
       });
     });
+    this.onIconFilter();
+    //this.mergedPattern = this.mergedPatternAll;
+    this.loading = false;
   }
   getSeedFromDotStatus() {
     const seed = [];
