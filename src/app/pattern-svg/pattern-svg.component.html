@@ -2,14 +2,12 @@
   <div (click)="onClick('pot')">
     <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
       <g>
-        <title>background</title>
         <rect fill="#e0ec34" id="canvas_background" height="152" width="152" y="-1" x="-1" />
         <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
           <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%" />
         </g>
       </g>
       <g>
-        <title>Layer 1</title>
         <ellipse ry="5" rx="5" id="svg_1" cy="25" cx="25" stroke-width="1.5" stroke="#000" fill="#fff" />
         <ellipse ry="5" rx="5" id="svg_3" cy="25" cx="75" stroke-width="1.5" stroke="#000" fill="#fff" />
         <ellipse ry="5" rx="5" id="svg_4" cy="25" cx="125" stroke-width="1.5" stroke="#000" fill="#fff" />
@@ -26,7 +24,7 @@
       </g>
     </svg>
   </div>
-  <div class="bottom-icons">
+  <div class="bottom-icons" *ngIf="data">
 
     <span class="p-name">
       <span>

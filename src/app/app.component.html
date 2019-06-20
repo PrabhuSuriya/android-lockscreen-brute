@@ -1,42 +1,83 @@
 <div class="container">
   <h3>Android LockScreen Brute</h3>
+  <div class="row">
+    <div class="col-md-3 col-sm-12 top-section">
+      <div>Starts at:</div>
+      <div>
+        <div *ngFor="let row of dots">
+          <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event.target.checked)"
+            [(ngModel)]="dotsStatus[dot]" type="checkbox" name="" id="">
+        </div>
+      </div>
+      <div>
+        <input class="btn btn-dark" type="button" (click)="onSelect('all')" value="Select All">
+        <input class="btn btn-dark" type="button" (click)="onSelect('none')" value="Select None">
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 top-section">
+      <div>Filter:</div>
+      <div>
+        <label>
+          <input (change)="changeIcon('ban', $event)" [(ngModel)]="iconStatus.ban" type="checkbox">
+          Hide Banned
+        </label>
+        <label>
+          <input (change)="changeIcon('chk', $event)" [(ngModel)]="iconStatus.chk" type="checkbox">
+          Hide Checked
+        </label>
+        <label>
+          <input (change)="changeIcon('thm', $event)" [(ngModel)]="iconStatus.thm" type="checkbox">
+          Hide Working
+        </label>
+        <label>
+          <input (change)="changeIcon('pot', $event)" [(ngModel)]="iconStatus.pot" type="checkbox">
+          Hide Potential
+        </label>
+      </div>
+      <div>
+        <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 top-section generate">
+      <div>Generate:</div>
+      <input type="number" [(ngModel)]="dotsLength">
+      <br>
+      <div>Total Combinations: {{this.mergedPattern.length}}</div>
+      <button class="btn btn-primary" (click)="onFilter()">Generate</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 seed-cont">
+      <div>Seeds</div>
+      <span class="badge badge-secondary" [ngClass]="{'selected': s==selectedSeed}" *ngFor="let s of seed">
+        <span (click)="updateSelectedSeed(s)">
+          {{s.join('')}}
+        </span>
+        <i class="fa fa-trash" aria-hidden="true" (click)="updateList(s, false)"></i>
+      </span>
+      <div>
+        <div class="btm">
+          <input type="number" name="" id="" #cutomseed>
+          <button class="btn btn-primary" (click)="addCustomSeed(cutomseed.value)">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 top-section">
+      <div>Custom Seed</div>
+      <pattern-svg [pattern]="selectedSeed || []" [data]="null">
+      </pattern-svg>
+    </div>
+  </div>
   <div>
-    Starts at:
-    <div *ngFor="let row of dots">
-      <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event)" [(ngModel)]="dotsStatus[dot]"
-        type="checkbox" name="" id="">
-    </div>
+
+
+
     <div>
-      <input class="btn btn-dark" type="button" (click)="onSelect('all')" value="Select All">
-      <input class="btn btn-dark" type="button" (click)="onSelect('none')" value="Select None">
+
     </div>
-    <div>
-      <label>
-        <input class="checkbox" (change)="changeIcon('ban', $event)" 
-        [(ngModel)]="iconStatus.ban" type="checkbox">
-        Hide Banned
-      </label>
-      <label>
-        <input class="checkbox" (change)="changeIcon('chk', $event)" 
-        [(ngModel)]="iconStatus.chk" type="checkbox">
-        Hide Checked
-      </label>
-      <label>
-        <input class="checkbox" (change)="changeIcon('thm', $event)" 
-        [(ngModel)]="iconStatus.thm" type="checkbox">
-        Hide Working
-      </label>
-      <label>
-        <input class="checkbox" (change)="changeIcon('pot', $event)" 
-        [(ngModel)]="iconStatus.pot" type="checkbox">
-        Hide Potential
-      </label>
-      <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
-    </div>
+
     <br>
-    <input type="number" [(ngModel)]="dotsLength">
-    <button class="btn btn-primary" (click)="onFilter()">Generate</button>
-    <span>Total combinaions: {{this.mergedPattern.length}}</span>
+
     <fa name="cog" animation="spin" class="loading" *ngIf="loading"></fa>
 
   </div>
@@ -45,9 +86,7 @@
   <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
   <div>
     <div class="pattern-container" *ngFor="let item of mergedPattern">
-      <pattern-svg 
-      [pattern]="item.pattern" [data]="item.data" 
-      (change)="onIconChange(item.pattern.join(''), $event)">
+      <pattern-svg [pattern]="item.pattern" [data]="item.data" (change)="onIconChange(item.pattern.join(''), $event)">
       </pattern-svg>
     </div>
   </div>

@@ -7,6 +7,7 @@ import { StorageService } from "./storage.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
+  seed = [];
   patterns = [];
   mergedPatternAll = [];
   mergedPattern = [];
@@ -26,6 +27,7 @@ export class AppComponent {
     false
   ];
   dotsLength = 3;
+  selectedSeed = [1,2,3];
   constructor(private _localStorageService: StorageService) {}
 
   ngOnInit() {
@@ -33,9 +35,16 @@ export class AppComponent {
     // const seed = this.getSeedFromDotStatus();
     // this.seedPatterns(seed, this.dotsLength);
     // this._localStorageService.upsert("12453", { ban: true });
+    this.seed = this.getSeedFromDotStatus();
+    console.log("%c USERLOG-seed", "color: green", this.seed);
   }
   onSelect(type: string) {
     this.dotsStatus = new Array(10).fill(type == "all");
+  }
+
+  updateSelectedSeed(seed){
+    this.selectedSeed = seed;
+    console.log("%c USERLOG-seed", "color: green", this.selectedSeed);
   }
   changeIcon(a, b) {}
 
@@ -51,8 +60,8 @@ export class AppComponent {
   }
   onFilter() {
     this.loading = true;
-    const seed = this.getSeedFromDotStatus();
-    this.seedPatterns(seed, this.dotsLength);
+    //this.seed = this.getSeedFromDotStatus();
+    this.seedPatterns(this.seed, this.dotsLength);
     this.mergedPattern = [];
     this.mergedPatternAll = [];
     this.patterns.forEach(x => {
@@ -79,15 +88,39 @@ export class AppComponent {
   }
 
   seedPatterns(seed, length) {
+    console.log("%c USERLOG-seed", "color: green", seed);
     this.patterns = [];
     seed.forEach(x => {
       // _patterns.concat(this.getPatterns(x, 3));
-      this.getPatterns(x, length);
+      this.getPatterns(x, length - x.length);
     });
   }
 
-  private updateList(value, evt) {
-    console.log("%c USERLOG-label", "color: green", value, this.dotsStatus);
+  addCustomSeed(seed) {
+    console.log(
+      "%c USERLOG-seed",
+      "color: green",
+      seed,
+      this.getSeedArray(seed)
+    );
+    this.seed.push(this.getSeedArray(seed));
+    if (seed.length == 1) {
+      this.dotsStatus[seed] = true;
+    }
+  }
+  getSeedArray(seed) {
+    return Array.from(`${seed}`, Number);
+  }
+  private updateList(dot, val) {
+    console.log("%c USERLOG-label", "color: green", dot, val);
+    if (val) {
+      this.seed.push([dot]);
+    } else {
+      this.seed = this.seed.filter(x => x != dot);
+    }
+    if (dot.length == 1) {
+      this.dotsStatus[dot] = val;
+    }
   }
 
   // allowedNumber = [
