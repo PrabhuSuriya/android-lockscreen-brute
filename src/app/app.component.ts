@@ -27,7 +27,7 @@ export class AppComponent {
     false
   ];
   dotsLength = 3;
-  selectedSeed = [1,2,3];
+  selectedSeed = [];
   constructor(private _localStorageService: StorageService) {}
 
   ngOnInit() {
