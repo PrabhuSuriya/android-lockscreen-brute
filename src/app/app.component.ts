@@ -44,7 +44,8 @@ export class AppComponent {
 
   updateSelectedSeed(seed){
     this.selectedSeed = seed;
-    console.log("%c USERLOG-seed", "color: green", this.selectedSeed);
+    // this.selectedSeed = [1,3,4,5];
+    console.log("%c USERLOG-seed", "color: green",seed, this.selectedSeed);
   }
   changeIcon(a, b) {}
 

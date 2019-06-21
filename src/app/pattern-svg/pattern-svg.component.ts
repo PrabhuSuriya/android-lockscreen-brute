@@ -1,16 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges
+} from "@angular/core";
 
 @Component({
   selector: "pattern-svg",
   templateUrl: "./pattern-svg.component.html",
   styleUrls: ["./pattern-svg.component.scss"]
 })
-export class PatternSvgComponent implements OnInit {
+export class PatternSvgComponent implements OnInit, OnChanges {
   @Input() pattern: number[];
   @Input() data: any;
   @Output() change = new EventEmitter(null);
 
   strokes: any[] = [];
+  points: any[] = [];
   pointMap = [
     {},
     { x: 25, y: 25 },
@@ -26,7 +34,18 @@ export class PatternSvgComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.initPattern();
+  }
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    this.initPattern();
+  }
+  initPattern() {
     console.log("%c USERLOG-input", "color: green", this.pattern);
+    this.strokes = [];
+    this.points = this.pattern.map(p => {
+      return { ...this.pointMap[p] };
+    });
+    console.log("%c USERLOG-points", "color: green", this.points);
     for (let i = 0; i < this.pattern.length - 1; i++) {
       this.strokes.push({
         x1: this.pointMap[this.pattern[i]].x,
