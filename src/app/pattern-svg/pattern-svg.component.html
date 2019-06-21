@@ -26,8 +26,8 @@
 
       </g>
       <g filter="url(#svg_14_blur)" id="svg_14">
-          <ellipse *ngFor="let p of points" ry="6" rx="6" id="svg_1" 
-          [attr.cy]="p.y" [attr.cx]="p.x" stroke-width="2" stroke="#000" fill="none" />
+          <ellipse *ngFor="let p of points;index as i" ry="6" rx="6" id="svg_1" 
+          [attr.cy]="p.y" [attr.cx]="p.x" stroke-width="2" [attr.stroke]="i==0?'#0ab226':'#000'" fill="none" />
       </g>
       <g>
         <line *ngFor="let line of strokes" stroke-linecap="null" stroke-linejoin="null" id="svg_13" [attr.x1]="line.x1"
