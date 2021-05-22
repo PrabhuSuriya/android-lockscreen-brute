@@ -1,8 +1,10 @@
-<div class="container">
+<header>
   <h3>Android LockScreen Brute</h3>
+</header>
+<div class="container">
   <div class="row">
-    <div class="col-md-3 col-sm-12 top-section">
-      <div>Starts at:</div>
+    <div class="col-md-3 col-sm-12 top-section seeder-section">
+      <div class="label-text">My pattern may start at:</div>
       <div>
         <div *ngFor="let row of dots">
           <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event.target.checked)"
@@ -14,9 +16,9 @@
         <input class="btn btn-dark" type="button" (click)="onSelect('none')" value="Select None">
       </div>
     </div>
-    <div class="col-md-3 col-sm-12 top-section">
-      <div>Filter:</div>
-      <div>
+    <div class="col-md-3 col-sm-12 top-section filter-section">
+      <div class="label-text">Filter:</div>
+      <div class="filter-container">
         <label>
           <input (change)="changeIcon('ban', $event)" [(ngModel)]="iconStatus.ban" type="checkbox">
           Hide Banned
@@ -34,9 +36,7 @@
           Hide Potential
         </label>
       </div>
-      <div>
-        <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
-      </div>
+      <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
     </div>
     <div class="col-md-3 col-sm-12 top-section generate">
       <div>Generate:</div>
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-3 seed-cont">
+    <div class="col-3 seed-cont top-section">
       <div>Seeds</div>
       <span class="badge badge-secondary" [ngClass]="{'selected': s==selectedSeed}" *ngFor="let s of seed">
         <span (click)="updateSelectedSeed(s)" class="custom-seed">

@@ -1,3 +1,8 @@
+header {
+  background-color: #6c4b5e;
+  color: #ffffff;
+  padding: 4px;
+}
 h3 {
   text-align: center;
 }
@@ -26,10 +31,12 @@ input[type="number"] {
   padding: 10px;
 }
 .top-section {
-  position: relative;
+  border: 1px gray dashed;
+  padding: 5px;
+  margin: 0 5px 5px 0;
   button {
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    // bottom: 0;
   }
 }
 .seed-cont .badge {
@@ -54,4 +61,36 @@ input[type="number"] {
 }
 .custom-seed {
   cursor: pointer;
+}
+
+
+
+.seeder-section {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .label-text {
+    align-self: flex-start;
+  }
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .label-text {
+    align-self: flex-start;
+  }
+  .filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    label {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
 }
