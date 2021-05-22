@@ -30,7 +30,10 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/scss/font-awesome.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng-lts/resources/themes/luna-blue/theme.css",
+              "node_modules/primeng-lts/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
             ],
             "scripts": []
           },

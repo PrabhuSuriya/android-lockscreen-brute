@@ -1,5 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-color: #ddffd9;
-    color: #568259;
+  background-color: #ddffd9;
+  color: #568259;
+}
+
+body p-inputNumber .ui-inputtext {
+  background-color: #fff;
+  color: #000;
+}
+.ui-inputnumber-buttons-vertical {
+  width: 3rem;
 }

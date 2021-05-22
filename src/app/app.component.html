@@ -38,9 +38,11 @@
       </div>
       <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
     </div>
-    <div class="col-md-3 col-sm-12 top-section generate">
-      <div>Generate:</div>
-      <input type="number" [(ngModel)]="dotsLength">
+    <div class="col-md-3 col-sm-12 top-section generate top-section">
+      <div class="label-text">Generate:</div>
+      <p-inputNumber  [(ngModel)]="dotsLength" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
+    decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+    </p-inputNumber>
       <br>
       <div>Total Combinations: {{this.mergedPattern.length}}</div>
       <button class="btn btn-primary" (click)="onFilter()">Generate</button>
