@@ -7,92 +7,149 @@
       <div class="label-text">My pattern may start at:</div>
       <div>
         <div *ngFor="let row of dots">
-          <input *ngFor="let dot of row" class="checkbox" (change)="updateList(dot, $event.target.checked)"
-            [(ngModel)]="dotsStatus[dot]" type="checkbox" name="" id="">
+          <input
+            *ngFor="let dot of row"
+            class="checkbox"
+            (change)="updateList(dot, $event.target.checked)"
+            [(ngModel)]="dotsStatus[dot]"
+            type="checkbox"
+            name=""
+            id=""
+          />
         </div>
       </div>
       <div>
-        <input class="btn btn-dark" type="button" (click)="onSelect('all')" value="Select All">
-        <input class="btn btn-dark" type="button" (click)="onSelect('none')" value="Select None">
+        <input
+          class="btn btn-dark"
+          type="button"
+          (click)="onSelect('all')"
+          value="Select All"
+        />
+        <input
+          class="btn btn-dark"
+          type="button"
+          (click)="onSelect('none')"
+          value="Select None"
+        />
       </div>
     </div>
+    <div class="col-md-3 col-sm-12 seed-cont top-section">
+      <div class="label-text">Seeds</div>
+      <div>
+        <span
+          class="badge badge-secondary"
+          [ngClass]="{ selected: s == selectedSeed }"
+          *ngFor="let s of seed"
+        >
+          <span (click)="updateSelectedSeed(s)" class="custom-seed">
+            {{ s.join("") }}
+          </span>
+          <i
+            class="fa fa-trash"
+            aria-hidden="true"
+            (click)="updateList(s, false)"
+          ></i>
+        </span>
+      </div>
+
+      <div style="display: flex; flex-direction: row" class="input-group">
+        <input
+          type="text"
+          style="height: 2rem; border-radius: 0.25rem 0 0 0.25rem"
+          class="form-control"
+          placeholder="Custom seed"
+          #cutomseed
+        />
+        <button
+          class="btn btn-primary"
+          style="border-radius: 0 0.25rem 0.25rem 0"
+          type="button"
+          (click)="addCustomSeed(cutomseed.value)"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-12 top-section">
+      <div>Custom Seed</div>
+      <pattern-svg [pattern]="selectedSeed || []" [data]="null"> </pattern-svg>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-3 col-sm-12 top-section filter-section">
       <div class="label-text">Filter:</div>
       <div class="filter-container">
         <label>
-          <input (change)="changeIcon('ban', $event)" [(ngModel)]="iconStatus.ban" type="checkbox">
+          <input
+            (change)="changeIcon('ban', $event)"
+            [(ngModel)]="iconStatus.ban"
+            type="checkbox"
+          />
           Hide Banned
         </label>
         <label>
-          <input (change)="changeIcon('chk', $event)" [(ngModel)]="iconStatus.chk" type="checkbox">
+          <input
+            (change)="changeIcon('chk', $event)"
+            [(ngModel)]="iconStatus.chk"
+            type="checkbox"
+          />
           Hide Checked
         </label>
         <label>
-          <input (change)="changeIcon('thm', $event)" [(ngModel)]="iconStatus.thm" type="checkbox">
+          <input
+            (change)="changeIcon('thm', $event)"
+            [(ngModel)]="iconStatus.thm"
+            type="checkbox"
+          />
           Hide Working
         </label>
         <label>
-          <input (change)="changeIcon('pot', $event)" [(ngModel)]="iconStatus.pot" type="checkbox">
+          <input
+            (change)="changeIcon('pot', $event)"
+            [(ngModel)]="iconStatus.pot"
+            type="checkbox"
+          />
           Hide Potential
         </label>
       </div>
       <button class="btn btn-primary" (click)="onIconFilter()">Filter</button>
     </div>
-    <div class="col-md-3 col-sm-12 top-section generate top-section">
+    <div class="col-md-3 col-sm-12 top-section generate">
       <div class="label-text">Generate:</div>
-      <p-inputNumber  [(ngModel)]="dotsLength" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
-    decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
-    </p-inputNumber>
-      <br>
-      <div>Total Combinations: {{this.mergedPattern.length}}</div>
+      <p-inputNumber
+        [(ngModel)]="dotsLength"
+        [showButtons]="true"
+        buttonLayout="vertical"
+        spinnerMode="vertical"
+        inputId="vertical"
+        decrementButtonClass="p-button-secondary"
+        incrementButtonClass="p-button-secondary"
+        incrementButtonIcon="pi pi-plus"
+        decrementButtonIcon="pi pi-minus"
+      >
+      </p-inputNumber>
+      <br />
+      <div>Total Combinations: {{ this.mergedPattern.length }}</div>
       <button class="btn btn-primary" (click)="onFilter()">Generate</button>
     </div>
   </div>
-  <div class="row">
-    <div class="col-3 seed-cont top-section">
-      <div>Seeds</div>
-      <span class="badge badge-secondary" [ngClass]="{'selected': s==selectedSeed}" *ngFor="let s of seed">
-        <span (click)="updateSelectedSeed(s)" class="custom-seed">
-          {{s.join('')}}
-        </span>
-        <i class="fa fa-trash" aria-hidden="true" (click)="updateList(s, false)"></i>
-      </span>
-      <div>
-        <div class="btm">
-          <input type="number" name="" id="" #cutomseed>
-          <button class="btn btn-primary" (click)="addCustomSeed(cutomseed.value)">Add</button>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-3 top-section">
-      <div>Custom Seed</div>
-      <pattern-svg [pattern]="selectedSeed || []" [data]="null">
-      </pattern-svg>
-    </div>
-  </div>
   <div>
+    <div></div>
 
-
-
-    <div>
-
-    </div>
-
-    <br>
-
-    <fa name="cog" animation="spin" class="loading" *ngIf="loading"></fa>
-
+    <br />
   </div>
-
 
   <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
   <div>
     <div class="pattern-container" *ngFor="let item of mergedPattern">
-      <pattern-svg [pattern]="item.pattern" [data]="item.data" (change)="onIconChange(item.pattern.join(''), $event)">
+      <pattern-svg
+        [pattern]="item.pattern"
+        [data]="item.data"
+        (change)="onIconChange(item.pattern.join(''), $event)"
+      >
       </pattern-svg>
     </div>
   </div>
-
 
   <router-outlet></router-outlet>
 </div>
