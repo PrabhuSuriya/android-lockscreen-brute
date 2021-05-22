@@ -1,8 +1,8 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { AngularFontAwesomeModule } from "angular-font-awesome";
 import { NgxLocalStorageModule } from "ngx-localstorage";
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -16,10 +16,10 @@ import { PatternSvgComponent } from "./pattern-svg/pattern-svg.component";
     AppRoutingModule,
     FormsModule,
     NgxLocalStorageModule.forRoot({ prefix: "lockscreen" }),
-    AngularFontAwesomeModule
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [PatternComponent, PatternSvgComponent]
 })
-export class AppModule {}
+export class AppModule { }
