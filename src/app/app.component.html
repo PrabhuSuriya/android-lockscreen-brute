@@ -129,16 +129,11 @@
       >
       </p-inputNumber>
       <br />
-      <div>Total Combinations: {{ this.mergedPattern.length }}</div>
       <button class="btn btn-primary" (click)="onFilter()">Generate</button>
     </div>
   </div>
-  <div>
-    <div></div>
-
-    <br />
-  </div>
-
+  
+  <div>Total Combinations: {{ this.mergedPattern.length }}</div>
   <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
   <div>
     <div class="pattern-container" *ngFor="let item of mergedPattern">
