@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div (click)="onClick('pot')">
+  <div (click)="onClick('pot')" style="border-radius: 5px 5px 0 0; overflow: hidden;">
     <svg width="150" height="150" xmlns="http://www.w3.org/2000/svg">
       <defs>
           <filter id="svg_14_blur">
@@ -36,10 +36,10 @@
       </g>
     </svg>
   </div>
-  <div class="bottom-icons" *ngIf="data">
+  <div class="bottom-icons" *ngIf="data" style="border-radius: 0 0 5px 5px;">
 
     <span class="p-name">
-      <span>
+      <span class="pl-1">
         {{pattern.join('')}}
       </span>
       <span class="icon-wrapper">

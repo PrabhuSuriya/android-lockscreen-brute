@@ -2,7 +2,7 @@
   <h3>Android Lockscreen Rekindler</h3>
 </header>
 <div class="container">
-  <div class="row">
+  <div class="row mt-2 justify-content-center">
     <div class="col-md-3 col-sm-12 top-section seeder-section">
       <div class="label-text">My pattern may start at:</div>
       <div>
@@ -18,7 +18,7 @@
           />
         </div>
       </div>
-      <div>
+      <!-- <div>
         <input
           class="btn btn-dark"
           type="button"
@@ -31,7 +31,7 @@
           (click)="onSelect('none')"
           value="Select None"
         />
-      </div>
+      </div> -->
     </div>
     <div class="col-md-3 col-sm-12 seed-cont top-section">
       <div class="label-text">Seeds</div>
@@ -54,17 +54,17 @@
 
       <div style="display: flex; flex-direction: row" class="input-group">
         <input
-          type="text"
+          type="number"
           style="height: 2rem; border-radius: 0.25rem 0 0 0.25rem"
           class="form-control"
           placeholder="Custom seed"
-          #cutomseed
+          [(ngModel)]="cutomseed"
         />
         <button
           class="btn btn-primary"
           style="border-radius: 0 0.25rem 0.25rem 0"
           type="button"
-          (click)="addCustomSeed(cutomseed.value)"
+          (click)="addCustomSeed()"
         >
           Add
         </button>
@@ -75,7 +75,7 @@
       <pattern-svg [pattern]="selectedSeed || []" [data]="null"> </pattern-svg>
     </div>
   </div>
-  <div class="row">
+  <div class="row d-flex justify-content-center">
     <div class="col-md-3 col-sm-12 top-section filter-section">
       <div class="label-text">Filter:</div>
       <div class="filter-container">
@@ -135,8 +135,8 @@
   
   <div>Total Combinations: {{ this.mergedPattern.length }}</div>
   <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
-  <div>
-    <div class="pattern-container" *ngFor="let item of mergedPattern">
+  <div class="d-flex flex-wrap justify-content-around">
+    <div class="pattern-container mb-3" *ngFor="let item of mergedPattern">
       <pattern-svg
         [pattern]="item.pattern"
         [data]="item.data"

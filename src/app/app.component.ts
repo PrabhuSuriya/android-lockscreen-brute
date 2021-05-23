@@ -28,6 +28,7 @@ export class AppComponent {
   ];
   dotsLength = 3;
   selectedSeed = [];
+  cutomseed = '';
   constructor(private _localStorageService: StorageService) {}
 
   ngOnInit() {
@@ -97,16 +98,13 @@ export class AppComponent {
     });
   }
 
-  addCustomSeed(seed) {
-    console.log(
-      "%c USERLOG-seed",
-      "color: green",
-      seed,
-      this.getSeedArray(seed)
-    );
-    this.seed.push(this.getSeedArray(seed));
-    if (seed.length == 1) {
-      this.dotsStatus[seed] = true;
+  addCustomSeed() {
+    if (this.cutomseed) {
+      this.seed.push(this.getSeedArray(this.cutomseed));
+      if (this.cutomseed.length == 1) {
+        this.dotsStatus[this.cutomseed] = true;
+      }
+      this.cutomseed = null;
     }
   }
   getSeedArray(seed) {
