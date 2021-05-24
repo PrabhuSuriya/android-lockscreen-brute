@@ -8,6 +8,8 @@ This app helps you in getting that pattern from your memory by generating all po
 This app is setup with CD to below url,
 
 http://android-lockscreen-brute.surge.sh/
+
+
 ## Features
 
 - Define multiple starting points for your pattern
@@ -46,9 +48,6 @@ Wait for the compilation to finish, fire up your favorite browser and hit the be
 
 http://localhost:3300/
 
-  
-## Screenshots
-
 
 ## Deployment
 
@@ -57,6 +56,12 @@ To deploy this project run
 ```bash
   npm run publish
 ```
+
+URL: http://android-lockscreen-brute.surge.sh/
+
+  
+## Screenshots
+
 
 <img src="https://user-images.githubusercontent.com/4282287/119380546-7fee0900-bcde-11eb-9b71-4b795d912851.png" width="250">
 <img src="https://user-images.githubusercontent.com/4282287/119381921-fe4aab00-bcde-11eb-94ff-365e831fdbd6.png" width="250">
