@@ -1,7 +1,9 @@
-<header>
-  <h3>Android Lockscreen Rekindler</h3>
+<header class="d-flex align-items-center justify-content-between">
+  <img src="assets/icon.png" style="height: 32px;" />
+  <h5>Android Lockscreen Rekindler</h5>
+  <div></div>
 </header>
-<div class="container">
+<div class="container mt-5">
   <div class="row mt-2 justify-content-center">
     <div class="col-md-3 col-sm-12 top-section seeder-section">
       <div class="label-text">My pattern may start at:</div>
@@ -56,7 +58,7 @@
         <input
           type="number"
           style="height: 2rem; border-radius: 0.25rem 0 0 0.25rem"
-          class="form-control"
+          class="form-control px-2"
           placeholder="Custom seed"
           [(ngModel)]="cutomseed"
         />

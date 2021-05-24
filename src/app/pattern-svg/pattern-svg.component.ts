@@ -57,7 +57,9 @@ export class PatternSvgComponent implements OnInit, OnChanges {
     console.log("%c USERLOG-strokes", "color: green", this.strokes);
   }
   onClick(type: string) {
-    this.data[type] = !this.data[type];
-    this.change.emit(this.data);
+    if (type)  {
+      this.data[type] = !this.data[type];
+      this.change.emit(this.data);
+    }
   }
 }

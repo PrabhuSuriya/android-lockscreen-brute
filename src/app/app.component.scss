@@ -2,6 +2,10 @@ header {
   background-color: #6c4b5e;
   color: #ffffff;
   padding: 4px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100vw;
 }
 h3 {
   text-align: center;
