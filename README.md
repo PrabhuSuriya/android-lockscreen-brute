@@ -1,27 +1,69 @@
-# AndroidLockscreen
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
+# Android Lockscreen Rekindler 
 
-## Development server
+Did you forget your lockscreen pattern? Need a small trigger to get that pattern from your memory?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This app helps you in getting that pattern from your memory by generating all possible combination narrowed down by bits of your memory.
 
-## Code scaffolding
+This app is setup with CD to below url,
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+http://android-lockscreen-brute.surge.sh/
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Features
 
-## Running unit tests
+- Define multiple starting points for your pattern
+- Define multiple starting combinations for your pattern
+- Ability to mark the patterns as potential pattern, impossible, pinned
+- The marked patterns are stored locally in localstorage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  
+## Run Locally
 
-## Running end-to-end tests
+Clone the project
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```bash
+  git clone https://github.com/PrabhuSuriya/android-lockscreen-brute.git
+```
 
-## Further help
+Go to the project directory
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```bash
+  cd android-lockscreen-brute
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+Wait for the compilation to finish, fire up your favorite browser and hit the below url
+
+http://localhost:3300/
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run publish
+```
+
+URL: http://android-lockscreen-brute.surge.sh/
+
+  
+## Screenshots
+
+
+<img src="https://user-images.githubusercontent.com/4282287/119380546-7fee0900-bcde-11eb-9b71-4b795d912851.png" width="250">
+<img src="https://user-images.githubusercontent.com/4282287/119381921-fe4aab00-bcde-11eb-94ff-365e831fdbd6.png" width="250">
+<img src="https://user-images.githubusercontent.com/4282287/119381931-03a7f580-bcdf-11eb-8479-1dcad7eb547c.png" width="250">
+<img src="https://user-images.githubusercontent.com/4282287/119381942-07d41300-bcdf-11eb-8c56-01fe3d7f8a61.png" width="250">
