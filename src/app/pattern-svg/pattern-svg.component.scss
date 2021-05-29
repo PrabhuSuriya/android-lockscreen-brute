@@ -2,29 +2,31 @@
   width: 150px;
   // position: relative;
   .bottom-icons {
-    background-color: #17607b;
+    background-color: #0b1114;
     color: #ffffff;
-    .p-name {
-      // position: absolute;
-      // bottom: 1px;
-      // left: 1px;
+    .pattern-name {
+      text-align: center;
+      color: #e0ec34;
+      font-weight: bold;
     }
     .icon-wrapper {
-      float: right;
+      display: flex;
+      justify-content: space-evenly;
       span {
         cursor: pointer;
         padding: 0 6px;
-        &.ban{
-            background-color: red;
+        border-radius: 2px;
+        &.ban {
+          background-color: red;
         }
-        &.chk{
-            background-color: rgb(20, 126, 247);
+        &.chk {
+          background-color: rgb(20, 126, 247);
         }
-        &.thm{
-            background-color: rgb(0, 255, 34);
+        &.thm {
+          background-color: rgb(0, 255, 34);
         }
-        &.pot{
-            background-color: #d549c4;
+        &.pot {
+          background-color: #d549c4;
         }
       }
     }

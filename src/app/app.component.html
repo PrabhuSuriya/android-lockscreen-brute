@@ -57,14 +57,14 @@
       <div style="display: flex; flex-direction: row" class="input-group">
         <input
           type="number"
-          style="height: 2rem; border-radius: 0.25rem 0 0 0.25rem"
-          class="form-control px-2"
+          style="height: 2rem; border-radius: 0.25rem 0 0 0.25rem;"
+          class="form-control px-2 mr-0"
           placeholder="Custom seed"
           [(ngModel)]="cutomseed"
         />
         <button
           class="btn btn-primary"
-          style="border-radius: 0 0.25rem 0.25rem 0"
+          style="border-radius: 0 0.25rem 0.25rem 0;min-width: 45px;"
           type="button"
           (click)="addCustomSeed()"
         >
@@ -135,7 +135,7 @@
     </div>
   </div>
   
-  <div>Total Combinations: {{ this.mergedPattern.length }}</div>
+  <div *ngIf="mergedPattern.length">Total Combinations: {{ mergedPattern.length }}</div>
   <!-- *ngIf="(!iconStatus.ban && item.data && item.ban === false)" -->
   <div class="d-flex flex-wrap justify-content-around">
     <div class="pattern-container mb-3" *ngFor="let item of mergedPattern">

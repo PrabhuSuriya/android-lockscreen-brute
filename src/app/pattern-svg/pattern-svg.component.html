@@ -39,15 +39,15 @@
   <div class="bottom-icons" *ngIf="data" style="border-radius: 0 0 5px 5px;">
 
     <span class="p-name">
-      <span class="pl-1">
+      <div class="pl-1 pattern-name">
         {{pattern.join('')}}
-      </span>
-      <span class="icon-wrapper">
+      </div>
+      <div class="icon-wrapper">
         <span [ngClass]="{'ban':data.ban}" (click)="onClick('ban')"><i class="fa fa-ban"></i></span>
         <span [ngClass]="{'chk':data.chk}" (click)="onClick('chk')"><i class="fa fa-check"></i></span>
         <span [ngClass]="{'thm':data.thm}" (click)="onClick('thm')"><i class="fa fa-thumbs-up"></i></span>
         <span [ngClass]="{'pot':data.pot}" (click)="onClick('pot')"><i class="fa fa-thumb-tack"></i></span>
-      </span>
+      </div>
     </span>
   </div>
 
